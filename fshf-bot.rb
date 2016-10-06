@@ -28,10 +28,18 @@ blacklist "abc", "def"
 # here's a list of things to exclude from searches
 exclude "spammer", "junk"
 
-search "#ALB" do |tweet|
- retweet(tweet[:id])
+loop do
+	search "#ALB" do |tweet|
+	 retweet(tweet[:id])
+	end
+
+	replies do |tweet|
+	  reply "This is just a bot. Please contact @arrddit for feedback", tweet
+	end
+
+  # explicitly update our config
+  update_config
+
+  sleep 60
 end
 
-replies do |tweet|
-  reply "This is just a bot. Please contact @arrddit for feedback", tweet
-end
