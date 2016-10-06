@@ -170,7 +170,7 @@ use_streaming
 #
 #end
 
-search "#ALB" do |tweet|
+search "#ALB " do |tweet|
  retweet(tweet.id)
 end
 
